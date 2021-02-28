@@ -1,26 +1,11 @@
-import sys
-
 # User Input & Validation
-keepGoing = True
-while keepGoing:
-	feet = input("Enter your Height in feet: ")
+feet = input("Enter your Height in feet: ")
+inches = input("Enter the remaining inches: ")
 
-	if not feet:
-		sys.exit("Nothing inputted")
-
-	inches = input("Enter the remaining inches: ")
-
-	if not inches:
-		sys.exit("Nothing inputted")
-	elif int(inches) > 12:
-		sys.exit("Inches must be less than 12")
-
-	verification = input("You're total height is " + str(feet) + "ft " + str(inches) + "in? (y/n): ")
-
-	if verification == "y":
-		keepGoing = False
-	else:
-		print("Please re-enter the details below.")
+if not feet or not inches:
+	quit("Nothing inputted")
+elif int(inches) > 12:
+	quit("Inches must be less than 12")
 
 # Computation
 feet = int(feet)
@@ -34,4 +19,5 @@ centimetersRemaining = (round(centimeters / 100, 2) - meters) * 100
 if totalInches >= 96:
 	print("Wow! You're really tall.")
 
-print(str(feet) + "ft " + str(inches) + "in is " + str(int(meters)) + "m " + str(int(centimetersRemaining)) + "cm")
+print(str(feet) + "ft " + str(inches) + "in is " 
+	+ str(int(meters)) + "m " + str(int(centimetersRemaining)) + "cm")

@@ -4,15 +4,15 @@ print("Square notation consists of a single letter(a-h) and a single digit(1-8).
 
 # Verify user conformed to input requirements
 def userInputVerification(userInput):
-		if len(userInput) != 2:
-			print("Please follow input guidelines.")
-		elif letter < 97 or letter > 104:
-			print("The letter has to be between a and h")
-		elif number < 1 or number > 8:
-			print("The number has to be between 1 and 8")
-		else:
-			return False
-		return True
+	if len(userInput) != 2:
+		print("Please follow input guidelines.")
+	elif letter < 97 or letter > 104:
+		print("The letter has to be between a and h")
+	elif number < 1 or number > 8:
+		print("The number has to be between 1 and 8")
+	else:
+		return False
+	return True
 
 # Determining color of square
 def getColor(pos, letter, number):
