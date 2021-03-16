@@ -3,25 +3,27 @@ from random import randint
 #Variables
 userInput = ""
 flipCount = []
-threeHeads = "HHH"
-threeTails = "TTT"
+heads = "HHH"
+tails = "TTT"
 
 # User Input
-userInput = int(input("How many simulations do you want to run?: "))
+userInput = input("How many simulations do you want to run?: ")
 print ()
 
 # Input validation
 if not userInput:
 	quit("Nothing Inputted")
-elif userInput <= 0:
-	quit("Input was less than 1")
+elif int(userInput) <= 0:
+	quit("Input was less than 0")
+else:
+	userInput = int(userInput)
 
 # Process
-for coin in range(0, userInput):
+for coin in range(userInput):
 	coins = ""
 	count = 0
 
-	while threeHeads not in coins and threeTails not in coins:
+	while True:
 		randomCoin = randint(1, 2)
 
 		if randomCoin == 1:
@@ -30,6 +32,9 @@ for coin in range(0, userInput):
 			coins += 'T'
 
 		count += 1
+
+		if heads in coins or tails in coins:
+			break
 
 	print ("Sim " + str(coin + 1) + ": " + coins + " Flips: " + str(count))	
 	flipCount.append(count)
