@@ -2,7 +2,6 @@
 print("Enter the grades below, when finished leave the last space empty. Your GPA will then be calculated.")
 
 # Variables
-keepGoing = True
 gpa = 0.0
 gpaList = []
 overallGpa = 0
