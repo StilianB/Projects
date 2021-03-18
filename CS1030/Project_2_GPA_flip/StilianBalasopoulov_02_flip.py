@@ -3,8 +3,8 @@ from random import randint
 #Variables
 userInput = ""
 flipCount = []
-heads = "HHH"
-tails = "TTT"
+heads = "H H H"
+tails = "T T T"
 
 # User Input
 userInput = input("How many simulations do you want to run?: ")
@@ -32,6 +32,7 @@ for coin in range(userInput):
 			coins += 'T'
 
 		count += 1
+		coins += " "
 
 		if heads in coins or tails in coins:
 			break

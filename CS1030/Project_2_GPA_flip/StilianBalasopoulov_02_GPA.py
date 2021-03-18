@@ -4,7 +4,10 @@ print("Enter the grades below, when finished leave the last space empty. Your GP
 # Variables
 keepGoing = True
 gpa = 0.0
-count = 0
+gpaList = []
+overallGpa = 0
+gradeCount = 0
+studentCount = 1
 grades = {	 'A+': 4.2, 
 			 'A': 4.0, 
 			 'A-': 3.9,
@@ -19,25 +22,44 @@ grades = {	 'A+': 4.2,
 			 'F': 0
 		 }
 
-# User Input
-while keepGoing:
-	userInput = input("Grade: ").upper()
+# Loop for each student
+while True:
+	print("Student " + str(studentCount))
+	count = 0
+	gpa = 0.0
+	
+	# User Input / Grade Input
+	while True:
+		userInput = input("Grade: ").upper()
 
-	# Break loop if userInput is 'QUIT' or empty
-	if not userInput or userInput == "QUIT":
-		keepGoing = False
+		# Input validation
+		if not userInput or userInput == 'QUIT':
+			break
 
-	# Input validation
-	if userInput in grades:
-		gpa += grades[userInput]
-		count += 1
-	elif not userInput or userInput == "QUIT":
-		print("Calculating GPA...")
+		# GPA dictionary conversion
+		if userInput in grades:
+			gpa += grades[userInput]
+			count += 1
+		elif not userInput or userInput == 'QUIT':
+			print("Calculating GPA...")
+		else:
+			print("Please enter a valid grade")
+
+	# GPA Calculation
+	if count > 0:
+		gpa	/= count
 	else:
-		print("Please enter a valid grade.")
+		break
 
-# Calculating GPA
-gpa /= count
+	# Individual student output
+	gpaList.append(gpa)
+	print("Student " + str(studentCount) + " GPA : " + str(gpa) + "\n")
+	studentCount += 1
 
-# Output
-print("Final GPA: " + str(round(gpa, 1)))
+# Overall gpa calc
+for gpa in gpaList:
+	overallGpa += gpa
+overallGpa /= studentCount - 1
+
+# Overall output
+print("Overall GPA: " + str(overallGpa))
