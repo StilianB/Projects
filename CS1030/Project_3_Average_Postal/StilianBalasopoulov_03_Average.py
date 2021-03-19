@@ -1,35 +1,43 @@
-"""Below and Above Average – List Practice
+print("Enter as many numbers at wanted, type '0' to quit.")
 
-Write a program that reads integers from a user and 
-places them into a list. Stop entering numbers when 
-he user enters a 0. Don’t put the 0 in the list. 
-Display the average of all the numbers in the list. 
-Then using three lists one after the other, display 
-all numbers that are below the average, that equal 
-the average, and that are above the average. 
-Include an appropriate title at the start of each 
-of the three lists. Allow for the possibility that 
-there are no numbers below the average and no numbers 
-above the average. (What does that mean about the 
-numbers in the list?)"""
+# Variables
+usrList = []
+avgList = []
+higher = []
+lower = []
+average = 0
 
-"""
-User Input
-	if user enters 0 stop entering numbers
-	dont put 0 into the list
-put user input into list
-display the average of all numbers in list
-	avg = sum(list) / len(list)
-create 3 lists
-	1 for all numbers lower than average
-	1 for all numbers equal to average
-	1 for all numbers higher than average
+# User Input
+while True:
+	usrInput = input("> ")
 
-	for i in range(len(userInput))
-		check if number is ><= avg
-		put in corresponding list
+	if not usrInput or usrInput == '0':
+		break
+	else:
+		try:
+			usrInput = int(usrInput)
+			usrList.append(usrInput)
+		except ValueError:
+			print("Input was not an int")
 
-Formatted output showing userInput list,
-avg, and the remaining lists
+# Find Average
+try:
+	average = int(sum(usrList) / len(usrList))
+except ZeroDivisionError:
+	pass
 
-"""
+# Sort into lists
+for var in usrList:
+	if var == average:
+		avgList.append(var)
+	elif var < avg:
+		lower.append(var)
+	else:
+		higher.append(var)
+
+# Output
+print("\nUser inputted list: " + str(usrList))
+print("Average: " + str(avg))
+print("\nHigher: " + str(higher))
+print("Lower: " + str(lower))
+print("Average: " + str(avgList))
