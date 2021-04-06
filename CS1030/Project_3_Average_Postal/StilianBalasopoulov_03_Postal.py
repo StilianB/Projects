@@ -1,18 +1,3 @@
-"""
-Odd characters are letters
-Even characters are numbers
-
-check the first value (userInput[0]) is in postalCodes
-	if not then output invalid input
-
-check the second value if its 0 or otherwise
-0 is rural
-anything else is urban
-
-Input
-validate the input - if invalid then print why
-if user hits enter end the program
-"""
 # Variables
 postalCodes = {
 	'A': 'Newfoundland',
@@ -38,6 +23,7 @@ postalCodes = {
 formattingCheck = False
 isRural = False
 
+# Checking each character for formatting mistakes and string information
 def postalAssignment(user, postal):
 	digitBool = False
 	upperBool = False
