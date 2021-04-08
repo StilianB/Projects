@@ -25,8 +25,10 @@ isRural = False
 
 # Checking each character for formatting mistakes and string information
 def postalAssignment(user, postal):
-	digitBool = False
-	upperBool = False
+	digitCount = 0
+	upperCount = 0
+	spaceCount = 0
+	firstCharacterCheck = False
 	formatBool = False
 	digit = [1, 4, 6]
 	upper = [0, 2, 5]
@@ -36,6 +38,9 @@ def postalAssignment(user, postal):
 		print("Length does not equal 7")
 	elif user[0] not in postal:
 		print("Location not in dictionary")
+	else:
+		firstCharacterCheck = True
+
 
 	# Checking second character
 	if user[1] == '0':
@@ -45,14 +50,18 @@ def postalAssignment(user, postal):
 
 	# Checking entire string formatting
 	for var in range(len(user)):
-		if var in digit:
-			if user[var].isdigit():
-				digitBool = True
-		elif var in upper:
-			if user[var].isupper():
-				upperBool = True
 
-	if digitBool and upperBool:
+		if var in upper:
+			if user[var].isupper():
+				upperCount += 1
+		elif var in digit:
+			if user[var].isdigit():
+				digitCount += 1
+		else:
+			if user[var].isspace():
+				spaceCount += 1
+
+	if upperCount == 3 and digitCount == 3 and spaceCount == 1 and firstCharacterCheck:
 		formatBool = True
 
 	return formatBool, isRural
@@ -64,6 +73,7 @@ while True:
 	if not userInput:
 		break
 
+	# Determine if format is correct and if postal code is rural
 	formattingCheck, isRural = postalAssignment(userInput, postalCodes)
 
 	# Output

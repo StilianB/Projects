@@ -1,0 +1,19 @@
+➜  Project_3_Average_Postal git:(main) ✗ python3.7 StilianBalasopoulov_03_Postal.py                                                0 [12:23:05]
+Enter a valid Postal Code: t2N 1n4
+Location: Albera
+Location is Urban
+Enter a valid Postal Code: x0A 1b2
+Location: Nunavut or Northwest Territories
+Location is Rural
+Enter a valid Postal Code: x1A 1n2
+Location: Nunavut or Northwest Territories
+Location is Urban
+Enter a valid Postal Code: d0e 9k9
+Location not in dictionary
+Enter a valid Postal Code: 00e 9k9
+Location not in dictionary
+Enter a valid Postal Code: aoe 3h6
+Enter a valid Postal Code: aoe3h6
+Length does not equal 7
+Enter a valid Postal Code: 
+➜  Project_3_Average_Postal git:(main) ✗   

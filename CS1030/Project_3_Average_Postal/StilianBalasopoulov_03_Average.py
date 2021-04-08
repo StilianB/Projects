@@ -6,6 +6,7 @@ avgList = []
 higher = []
 lower = []
 
+# Checking if user input is valid
 def inputValidation(usrList):
 	while True:
 		usrInput = input("> ")
@@ -19,6 +20,7 @@ def inputValidation(usrList):
 			except ValueError:
 				print("Input was not an int")
 
+# Find the average given user input
 def findAvg(usr):
 	try:
 		average = int(sum(usr) / len(usr))
@@ -27,6 +29,7 @@ def findAvg(usr):
 
 	return average
 
+# Sort existing user inputted list
 def sortList(usr, avg, higher, lower):
 	for var in usr:
 		if var == average:
@@ -36,7 +39,7 @@ def sortList(usr, avg, higher, lower):
 		else:
 			higher.append(var)
 
-# Operations
+# Process functions
 inputValidation(usrList)
 average = findAvg(usrList)
 sortList(usrList, avgList, higher, lower)

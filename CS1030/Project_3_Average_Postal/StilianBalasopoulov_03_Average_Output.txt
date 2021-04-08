@@ -1,0 +1,57 @@
+Enter as many numbers at wanted, type '0' to quit.
+> 0
+
+User inputted list: []
+Average: 0
+
+Higher: []
+Lower: []
+Average: []
+➜  Project_3_Average_Postal git:(main) ✗ python3.7 StilianBalasopoulov_03_Average.py                                               0 [12:20:10]
+Enter as many numbers at wanted, type '0' to quit.
+> 1
+> 2
+> 3
+> 4
+> 5
+> 6
+> 7
+> 8
+> 9
+> 10
+> 0
+
+User inputted list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+Average: 5
+
+Higher: [6, 7, 8, 9, 10]
+Lower: [1, 2, 3, 4]
+Average: [5]
+➜  Project_3_Average_Postal git:(main) ✗ python3.7 StilianBalasopoulov_03_Average.py                                               0 [12:20:19]
+Enter as many numbers at wanted, type '0' to quit.
+> 10
+> 9
+> 8
+> 
+
+User inputted list: [10, 9, 8]
+Average: 9
+
+Higher: [10]
+Lower: [8]
+Average: [9]
+➜  Project_3_Average_Postal git:(main) ✗ python3.7 StilianBalasopoulov_03_Average.py                                               0 [12:21:43]
+Enter as many numbers at wanted, type '0' to quit.
+> hello
+Input was not an int
+> 1
+> 2
+> 3
+> 0
+
+User inputted list: [1, 2, 3]
+Average: 2
+
+Higher: [3]
+Lower: [1]
+Average: [2]
