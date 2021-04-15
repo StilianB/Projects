@@ -28,6 +28,7 @@ pointTable = {
 }
 scores = []
 
+# Calculating score of each word
 def findScore(words, points, scores):
 	for line in words:
 		line = line.upper()
@@ -43,22 +44,27 @@ def findScore(words, points, scores):
 	
 	return scores
 
+# Accessing Text Document with Words
 with open("1030 Project 04 01 Words.txt") as input:
 	words = input.read().splitlines()
 
+# Remove blank list values
 for word in words:
 	if not word:
 		words.remove(word)
 
+# Setting list of scores
 scores = findScore(words, pointTable, scores)
 
-print("{:^15}|{:^15}".format("Words","Points"))
-print("-------------------------------")
+# Formatted output to file
+output = open("StilianBalasopoulov_04_01_Output.txt", "w")
+output.write("{:^15}|{:^15}".format("Words","Points"))
+output.write("\n-------------------------------\n")
 
 for i in range(len(words) - 1):
-	print("{:<15}|{:>15}".format(str(words[i]), str(scores[i])))
+	output.write("{:<15}|{:>15}\n".format(str(words[i]), str(scores[i])))
 
-print("-------------------------------")
-print("{:^15}|{:^15}".format("Total:",str(sum(scores))))
+output.write("-------------------------------\n")
+output.write("{:^15}|{:^15}".format("Total:",str(sum(scores))))
 
 

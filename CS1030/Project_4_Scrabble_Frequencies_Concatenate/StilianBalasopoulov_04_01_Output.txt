@@ -1,0 +1,12 @@
+     Words     |    Points     
+-------------------------------
+Hippo          |             12
+Platypus       |             15
+insulation     |             10
+Scrabble       |             14
+MATH 1110      |              9
+artificial     |             15
+intelligence   |             15
+machine        |             14
+-------------------------------
+    Total:     |      113      
