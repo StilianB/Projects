@@ -1,30 +1,14 @@
+# Assign Points to Letters
 pointTable = {
-	'A': 1,
-	'B': 3,
-	'C': 3,
-	'D': 2,
-	'E': 1,
-	'F': 4,
-	'G': 2,
-	'H': 4,
-	'I': 1,
-	'J': 8,
-	'K': 5,
-	'L': 1,
-	'M': 3,
-	'N': 1,
-	'O': 1,
-	'P': 3,
-	'Q': 10,
-	'R': 1,
-	'S': 1,
-	'T': 1,
-	'U': 1,
-	'V': 4,
-	'W': 4,
-	'X': 8,
-	'Y': 4,
-	'Z': 10
+	'A': 1, 'B': 3, 'C': 3,
+	'D': 2, 'E': 1, 'F': 4,
+	'G': 2, 'H': 4, 'I': 1,
+	'J': 8, 'K': 5, 'L': 1,
+	'M': 3, 'N': 1, 'O': 1,
+	'P': 3, 'Q': 10,'R': 1,
+	'S': 1, 'T': 1, 'U': 1,
+	'V': 4, 'W': 4, 'X': 8,
+	'Y': 4, 'Z': 10
 }
 scores = []
 
@@ -61,11 +45,11 @@ output = open("StilianBalasopoulov_04_01_Output.txt", "w")
 output.write("{:^15}|{:^15}".format("Words","Points"))
 output.write("\n-------------------------------\n")
 
+# Print each line of data
 for i in range(len(words) - 1):
 	output.write("{:<15}|{:>15}\n".format(str(words[i]), str(scores[i])))
 
+# Formatting and Output total
 output.write("-------------------------------\n")
 output.write("{:^15}|{:^15}".format("Total:",str(sum(scores))))
 output.close()
-
-
