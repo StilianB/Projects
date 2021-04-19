@@ -66,5 +66,6 @@ for i in range(len(words) - 1):
 
 output.write("-------------------------------\n")
 output.write("{:^15}|{:^15}".format("Total:",str(sum(scores))))
+output.close()
 
 
