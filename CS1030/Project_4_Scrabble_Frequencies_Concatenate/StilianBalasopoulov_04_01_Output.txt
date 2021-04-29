@@ -2,11 +2,11 @@
 -------------------------------
 Hippo          |             12
 Platypus       |             15
-insulation     |             10
+insulation     |              0
 Scrabble       |             14
 MATH 1110      |              9
-artificial     |             15
-intelligence   |             15
+artificial     |              0
+intelligence   |              0
 machine        |             14
 -------------------------------
-    Total:     |      113      
+    Total:     |      73       

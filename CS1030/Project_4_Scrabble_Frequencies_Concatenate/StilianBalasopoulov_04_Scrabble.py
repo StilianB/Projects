@@ -20,11 +20,13 @@ def findScore(words, points, scores):
 
 		if not line:
 			continue
-
-		for char in line:
-			if char in points and char.isalpha():
-				score += points[char]
-		scores.append(score)
+		elif len(line) >= 10:
+			scores.append(0)
+		else:
+			for char in line:
+				if char in points and char.isalpha():
+					score += points[char]
+			scores.append(score)
 	
 	return scores
 
