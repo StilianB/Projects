@@ -12,6 +12,7 @@
 
 int valid[NUM_THREADS] = {0};
 int sudoku[9][9];
+int numPuzzle = 1;
 
 typedef struct {
 	int row;
@@ -97,24 +98,16 @@ void *rowValid (void* param) {
 	pthread_exit(NULL);
 }
 
-int main() {
+int validateSudokuPuzzle(FILE *inputFile, FILE *outputFile) {
 	pthread_t threads[NUM_THREADS];
 	int threadsIndex = 0;
 	int i,j;
-
-	// I/O for puzzle and output
-	FILE *sudokuPuzzle = fopen("SudokuPuzzle.txt", "r");
-	FILE *testResults = fopen("testResults.txt", "w");
-	if (sudokuPuzzle == NULL || testResults == NULL) {
-		printf("ERROR: Could not open txt file.");
-		exit(-1);
-	}
 
 	// Scanning input file and placing numbers in puzzle
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 9; j++) {
 			char c;
-			if (fscanf(sudokuPuzzle, " %c", &c) != 1)
+			if (fscanf(inputFile, " %c", &c) != 1)
 				pass;
 			else if (isdigit((unsigned char)c))
 				sudoku[i][j] = c - '0';
@@ -122,13 +115,16 @@ int main() {
 	}
 
 	// Printing Sudoku Puzzle to testResults.txt
+	fprintf(outputFile, "Sudoku Puzzle #%d\n", numPuzzle);
+	numPuzzle++;
 	for (i = 0; i < 9; i++) {
 		for (j = 0; j < 9; j++) {
-			fprintf(testResults, "%d ", sudoku[i][j]);
+			fprintf(outputFile, "%d ", sudoku[i][j]);
 		}
-		fprintf(testResults, "\n");
+		fprintf(outputFile, "\n");
 	}
 
+	// Run each function based on the location of data given (column, row, or 3x3 grid)
 	for (i = 0; i < 9; i++) {
 		for (j = 0; j < 9; j++) {
 			if (i % 3 == 0 && j % 3 == 0) {
@@ -152,20 +148,44 @@ int main() {
 		}
 	}
 
-	// Wait for all threads to finish
+	// Wait for all threads to finish.
 	for (i = 0; i < NUM_THREADS; i++) {
 		pthread_join(threads[i], NULL);
 	}
 
-	fprintf(testResults, "\n");
-
+	// If valid contains a 0, then the solution is invalid.
 	for (i = 0; i < NUM_THREADS; i++) {
 		if (valid[i] == 0) {
-			fprintf(testResults, "Solution is Invalid.");
+			fprintf(outputFile, "Solution is Invalid.\n\n");
 			return 0;
 		}
+		// Clearing valid[] array for next solution.
+		valid[i] = 0;
 	}
 
-	fprintf(testResults, "Solution is Valid!");
+	fprintf(outputFile, "Solution is Valid!\n\n");
+	return 0;
+}
+
+int main() {
+	int i,j;
+
+	// Initializing all sudoku testing files.
+	FILE *sudokuPuzzle1 = fopen("SudokuPuzzle1.txt", "r");
+	FILE *sudokuPuzzle2 = fopen("SudokuPuzzle2.txt", "r");
+	FILE *sudokuPuzzle3 = fopen("SudokuPuzzle3.txt", "r");
+	FILE *testResults = fopen("testResults.txt", "w");
+
+	// Validating that each puzzle has an input.
+	if (sudokuPuzzle1 == NULL || sudokuPuzzle2 == NULL || sudokuPuzzle3 == NULL || testResults == NULL) {
+		printf("ERROR: Could not open txt file.");
+		exit(-1);
+	}
+
+	// Testing each puzzle from each file.
+	validateSudokuPuzzle(sudokuPuzzle1, testResults);
+	validateSudokuPuzzle(sudokuPuzzle2, testResults);
+	validateSudokuPuzzle(sudokuPuzzle3, testResults);
+
 	return 0;
 }
